@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useAuth, UserButton } from '@clerk/clerk-react';
+import { useAuth } from '@clerk/clerk-react';
 import { fetchWithAuth } from '../../services/api';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { DollarSign, Car, ShoppingCart, Loader2 } from 'lucide-react';
@@ -46,15 +46,7 @@ export default function Dashboard() {
   const hasData = data.total_earnings > 0 || data.cars_listed > 0 || data.orders > 0;
 
   return (
-    <div className="min-h-screen bg-[#0A0D12] text-white">
-      {/* Header */}
-      <header className="border-b border-white/10 bg-[#0E131A] px-8 py-4 flex items-center justify-between">
-        <h1 className="text-2xl font-bold font-['Sora'] text-white">DriveSphere</h1>
-        <div className="flex items-center gap-4">
-          <UserButton appearance={{ elements: { userButtonAvatarBox: "w-10 h-10" } }} />
-        </div>
-      </header>
-
+    <div className="w-full h-full text-white">
       <main className="p-4 sm:p-8 max-w-7xl mx-auto">
         <h2 className="text-3xl font-semibold font-['Sora'] mb-8">Overview</h2>
 

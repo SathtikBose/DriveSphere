@@ -7,4 +7,5 @@ urlpatterns = [
     path('api/v1/health/', health_check, name='health_check'),
     path('api/v1/users/', include('apps.users.urls')),
     path('api/v1/dashboard/', include('apps.dashboard.urls')),
+    path('api/v1/cars/', include('apps.cars.urls')),
 ]

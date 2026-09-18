@@ -19,6 +19,7 @@ class Car(models.Model):
     fuel_type = models.CharField(max_length=50, blank=True)
     transmission = models.CharField(max_length=50, blank=True)
     description = models.TextField(blank=True)
+    primary_image_url = models.URLField(max_length=1024, blank=True, null=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='DRAFT')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
