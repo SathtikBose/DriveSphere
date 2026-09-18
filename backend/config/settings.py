@@ -97,3 +97,13 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True # For development, will tighten for production
+
+# DRF Configuration
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'apps.users.authentication.ClerkAuthentication',
+    ),
+}
+
+CLERK_SECRET_KEY = os.getenv('CLERK_SECRET_KEY')
+CLERK_FRONTEND_API_URL = os.getenv('CLERK_FRONTEND_API_URL')
