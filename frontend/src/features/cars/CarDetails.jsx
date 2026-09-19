@@ -64,6 +64,20 @@ export default function CarDetails() {
     ? car.images.map(img => img.image_url)
     : car.primary_image_url ? [car.primary_image_url] : ['https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&q=80&w=800'];
 
+  const handleBuyNow = async () => {
+    try {
+      const result = await fetchWithAuth('/api/v1/payments/create-checkout-session/', getToken, {
+        method: 'POST',
+        body: JSON.stringify({ car_id: car.id })
+      });
+      if (result.url) {
+        window.location.href = result.url;
+      }
+    } catch (err) {
+      alert(err.message || 'Error initiating checkout');
+    }
+  };
+
   return (
     <div className="min-h-[calc(100vh-80px)] bg-[#0A0D12] text-white p-4 sm:p-8">
       <div className="max-w-6xl mx-auto">
@@ -148,7 +162,10 @@ export default function CarDetails() {
               </div>
 
               {!isSeller ? (
-                <button className="w-full bg-[#00E5FF] hover:bg-[#00b3cc] text-[#0A0D12] font-bold py-4 rounded-md transition-all font-['Sora'] shadow-[0_0_20px_rgba(0,229,255,0.2)] hover:shadow-[0_0_25px_rgba(0,229,255,0.4)] text-lg">
+                <button 
+                  onClick={handleBuyNow}
+                  className="w-full bg-[#00E5FF] hover:bg-[#00b3cc] text-[#0A0D12] font-bold py-4 rounded-md transition-all font-['Sora'] shadow-[0_0_20px_rgba(0,229,255,0.2)] hover:shadow-[0_0_25px_rgba(0,229,255,0.4)] text-lg"
+                >
                   Buy Now
                 </button>
               ) : (

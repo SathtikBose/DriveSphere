@@ -7,6 +7,8 @@ import Dashboard from './features/dashboard/Dashboard'
 import Marketplace from './features/marketplace/Marketplace'
 import CreateListing from './features/cars/CreateListing'
 import CarDetails from './features/cars/CarDetails'
+import CheckoutSuccess from './features/payments/CheckoutSuccess'
+import CheckoutCancel from './features/payments/CheckoutCancel'
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
         <Route path="/marketplace" element={<Marketplace />} />
         <Route path="/create-listing" element={<CreateListing />} />
         <Route path="/marketplace/:id" element={<CarDetails />} />
+        
+        <Route path="/checkout/success" element={<CheckoutSuccess />} />
+        <Route path="/checkout/cancel" element={<CheckoutCancel />} />
       </Route>
     </Routes>
   )
