@@ -23,6 +23,12 @@ export default function Layout() {
           </nav>
         </div>
         <div className="flex items-center gap-4">
+          <NavLink 
+            to="/create-listing" 
+            className="bg-[#00E5FF]/10 text-[#00E5FF] border border-[#00E5FF]/20 hover:bg-[#00E5FF]/20 px-4 py-2 rounded-md font-['Space_Grotesk'] text-sm font-bold tracking-wide transition-all"
+          >
+            + List Vehicle
+          </NavLink>
           <UserButton appearance={{ elements: { userButtonAvatarBox: "w-10 h-10" } }} />
         </div>
       </header>
