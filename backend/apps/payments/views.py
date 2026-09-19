@@ -28,9 +28,6 @@ def create_checkout_session(request):
     # Double purchase protection
     if car.status == 'SOLD':
         return Response({'error': 'This car has already been sold.'}, status=status.HTTP_400_BAD_REQUEST)
-        
-    if car.seller == request.user:
-        return Response({'error': 'You cannot buy your own car.'}, status=status.HTTP_400_BAD_REQUEST)
 
     try:
         # Create Stripe Checkout Session
