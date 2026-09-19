@@ -11,11 +11,12 @@ import CheckoutSuccess from './features/payments/CheckoutSuccess'
 import CheckoutCancel from './features/payments/CheckoutCancel'
 import Orders from './features/orders/Orders'
 import Profile from './features/profile/Profile'
+import Landing from './features/landing/Landing'
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/dashboard" replace />} />
+      <Route path="/" element={<Landing />} />
       <Route path="/login/*" element={<Login />} />
       <Route path="/signup/*" element={<Signup />} />
       
