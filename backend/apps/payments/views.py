@@ -59,10 +59,9 @@ def create_checkout_session(request):
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
 
 @csrf_exempt
-@api_view(['POST'])
-@permission_classes([AllowAny])
 def stripe_webhook(request):
     payload = request.body
     sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
