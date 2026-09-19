@@ -26,6 +26,12 @@ export default function Layout() {
             >
               Orders
             </NavLink>
+            <NavLink 
+              to="/profile" 
+              className={({ isActive }) => `text-sm font-['Space_Grotesk'] font-bold tracking-widest uppercase transition-colors ${isActive ? 'text-[#00E5FF]' : 'text-gray-400 hover:text-white'}`}
+            >
+              Settings
+            </NavLink>
           </nav>
         </div>
         <div className="flex items-center gap-4">

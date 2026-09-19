@@ -10,6 +10,7 @@ import CarDetails from './features/cars/CarDetails'
 import CheckoutSuccess from './features/payments/CheckoutSuccess'
 import CheckoutCancel from './features/payments/CheckoutCancel'
 import Orders from './features/orders/Orders'
+import Profile from './features/profile/Profile'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/marketplace" element={<Marketplace />} />
         <Route path="/orders" element={<Orders />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/create-listing" element={<CreateListing />} />
         <Route path="/marketplace/:id" element={<CarDetails />} />
         
