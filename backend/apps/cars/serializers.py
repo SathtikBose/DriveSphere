@@ -31,3 +31,23 @@ class CarSerializer(serializers.ModelSerializer):
             'primary_image_url', 'status', 'created_at', 'updated_at',
             'images', 'image_urls'
         ]
+
+    def create(self, validated_data):
+        image_urls = validated_data.pop('image_urls', [])
+        car = Car.objects.create(**validated_data)
+        for url in image_urls:
+            CarImage.objects.create(car=car, image_url=url)
+        return car
+
+    def update(self, instance, validated_data):
+        image_urls = validated_data.pop('image_urls', None)
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+        
+        if image_urls is not None:
+            # Replace existing images with new ones
+            instance.images.all().delete()
+            for url in image_urls:
+                CarImage.objects.create(car=instance, image_url=url)
+        return instance
