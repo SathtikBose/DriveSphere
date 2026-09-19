@@ -5,7 +5,7 @@ from apps.users.models import UserProfile
 class SellerSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ['id', 'first_name', 'last_name', 'email']
+        fields = ['id', 'clerk_user_id', 'first_name', 'last_name', 'email']
 
 class CarImageSerializer(serializers.ModelSerializer):
     class Meta:

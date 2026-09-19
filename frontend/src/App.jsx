@@ -5,8 +5,8 @@ import ProtectedRoute from './features/auth/ProtectedRoute'
 import Layout from './components/Layout'
 import Dashboard from './features/dashboard/Dashboard'
 import Marketplace from './features/marketplace/Marketplace'
-
 import CreateListing from './features/cars/CreateListing'
+import CarDetails from './features/cars/CarDetails'
 
 function App() {
   return (
@@ -20,8 +20,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/marketplace" element={<Marketplace />} />
         <Route path="/create-listing" element={<CreateListing />} />
-        {/* Placeholder for Car Details */}
-        <Route path="/marketplace/:id" element={<div className="p-8 text-white">Car Details (Phase 5)</div>} />
+        <Route path="/marketplace/:id" element={<CarDetails />} />
       </Route>
     </Routes>
   )
