@@ -42,4 +42,23 @@ class ClerkAuthentication(authentication.BaseAuthentication):
         
         user, created = UserProfile.objects.get_or_create(clerk_user_id=clerk_user_id)
         
+        # Sync User Data from Clerk if missing
+        if created or not user.email:
+            import requests
+            clerk_secret = os.getenv('CLERK_SECRET_KEY')
+            if clerk_secret:
+                try:
+                    headers = {"Authorization": f"Bearer {clerk_secret}"}
+                    resp = requests.get(f"https://api.clerk.com/v1/users/{clerk_user_id}", headers=headers)
+                    if resp.status_code == 200:
+                        c_data = resp.json()
+                        emails = c_data.get('email_addresses', [])
+                        if emails:
+                            user.email = emails[0].get('email_address')
+                        user.first_name = c_data.get('first_name', '')
+                        user.last_name = c_data.get('last_name', '')
+                        user.save()
+                except Exception:
+                    pass
+        
         return (user, token)
