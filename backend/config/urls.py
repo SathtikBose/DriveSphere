@@ -9,4 +9,6 @@ urlpatterns = [
     path('api/v1/dashboard/', include('apps.dashboard.urls')),
     path('api/v1/cars/', include('apps.cars.urls')),
     path('api/v1/payments/', include('apps.payments.urls')),
+    path('api/v1/orders/', include('apps.orders.urls')),
+    path('api/v1/invoices/', include('apps.invoices.urls')),
 ]
