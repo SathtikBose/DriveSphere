@@ -101,7 +101,7 @@ def stripe_webhook(request):
                         Order.objects.create(
                             buyer=buyer,
                             car=car,
-                            stripe_session_id=session.get('id'),
+                            stripe_session_id=session_dict.get('id'),
                             amount=car.price,
                             status='COMPLETED'
                         )
